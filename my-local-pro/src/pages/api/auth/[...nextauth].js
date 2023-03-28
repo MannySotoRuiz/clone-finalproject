@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
-// import prisma from "@/lib/prisma";
-import { db } from "@/lib/prisma/db";
+import prisma from "@/lib/prisma";
+// import { db } from "@/lib/prisma/db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -14,7 +14,7 @@ export const authOptions = {
     pages: {
         signIn: "/"
     },
-    adapter: PrismaAdapter(db),
+    adapter: PrismaAdapter(prisma),
     session: {
         strategy: 'jwt'
     },
@@ -29,7 +29,7 @@ export const authOptions = {
             return session
         },
         async jwt({ token, user }) {
-            const dbUser = await db.user.findFirst({
+            const dbUser = await prisma.user.findFirst({
                 where: {
                     email: token.email,
                 }
