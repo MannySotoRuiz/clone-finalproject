@@ -1,11 +1,11 @@
-import { getUserById } from "@/lib/prisma/users"
+import { getUserById, getUsers } from "@/lib/prisma/users"
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
   try {
-    const { foundUser, error } = await getUserById("641e862d653e36ae9b25af41");
+    const { users, error } = await getUsers();
     if (error) throw new Error(error);
-    return NextResponse.json({ foundUser });
+    return NextResponse.json({ users });
   } catch (error) {
     return NextResponse.json({ error: error.message});
   }
