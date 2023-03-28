@@ -29,7 +29,7 @@ export default function PreviewCard() {
             <div className="flex flex-col">
                 {/* title and rating */}
                 <div className="flex justify-center my-1">
-                    <p className="font-medium flex-1">Roberto's Plumbing</p>
+                    <p className="font-medium flex-1">Roberto&apos;s Plumbing</p>
                     <div className="flex gap-1 items-center justify-center">
                         <AiFillStar />
                         <p>4.5</p>
